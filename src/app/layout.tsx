@@ -73,56 +73,7 @@ async function getFooterData() {
 
 const RootLayout: FC<{ children: JSX.Element }> = async ({ children }) => {
   const { footerData } = await getFooterData();
-  console.log("footerData ++++", footerData);
-  // const footerData = {
-  //   title: "Demo",
-  //   linkList: [
-  //     {
-  //       title: "技术栈",
-  //       list: [
-  //         {
-  //           label: "react",
-  //         },
-  //         {
-  //           label: "typescript",
-  //         },
-  //         {
-  //           label: "ssr",
-  //         },
-  //         {
-  //           label: "nodejs",
-  //         },
-  //       ],
-  //     },
-  //     {
-  //       title: "了解更多",
-  //       list: [
-  //         {
-  //           label: "掘金",
-  //           link: "https://juejin.cn/user/2714061017452557",
-  //         },
-  //         {
-  //           label: "知乎",
-  //           link: "https://www.zhihu.com/people/zmAboutFront",
-  //         },
-  //         {
-  //           label: "csdn",
-  //         },
-  //       ],
-  //     },
-  //     {
-  //       title: "联系我",
-  //       list: [{ label: "微信" }, { label: "QQ" }],
-  //     },
-  //   ],
-  //   qrCode: {
-  //     image: code,
-  //     text: "微信公众号",
-  //   },
-  //   copyRight: "Copyright © 2022 xxx. 保留所有权利",
-  //   siteNumber: "ICP备12345号-1",
-  //   publicNumber: "公网安备 66666号",
-  // };
+
   return (
     <html lang="en">
       <body className={inter.className}>
