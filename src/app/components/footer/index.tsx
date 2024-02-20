@@ -1,7 +1,6 @@
 "use client";
 import { FC } from "react";
 import Image, { StaticImageData } from "next/image";
-import publicLogo from "../../../../public/public_logo.png";
 import styles from "./styles.module.scss";
 import cName from "classnames";
 
@@ -23,20 +22,9 @@ interface IQRCode {
 export interface IFooterProps {
   title: string;
   linkList: ILinkList[];
-  qrCode: IQRCode;
-  copyRight: string;
-  siteNumber: string;
-  publicNumber: string;
 }
 
-export const Footer: FC<IFooterProps> = ({
-  title,
-  linkList,
-  qrCode,
-  copyRight,
-  siteNumber,
-  publicNumber,
-}) => {
+export const Footer: FC<IFooterProps> = ({ title, linkList }) => {
   return (
     <div className={styles.footer}>
       <div className={styles.topArea}>
@@ -75,32 +63,7 @@ export const Footer: FC<IFooterProps> = ({
         </div>
       </div>
       <div className={styles.bottomArea}>
-        <div className={styles.codeArea}>
-          <div>
-            <Image
-              src={qrCode?.image}
-              alt={qrCode?.text}
-              width={56}
-              height={56}
-            ></Image>
-          </div>
-          <div className={styles.text}>{qrCode?.text}</div>
-        </div>
-        <div className={styles.numArea}>
-          <span>{copyRight}</span>
-          <span>{siteNumber}</span>
-          <div className={styles.publicLogo}>
-            <div className={styles.logo}>
-              <Image
-                src={publicLogo}
-                alt={publicNumber}
-                width={20}
-                height={20}
-              ></Image>
-            </div>
-            <span>{publicNumber}</span>
-          </div>
-        </div>
+        <div className={styles.codeArea}></div>
       </div>
     </div>
   );

@@ -1,3 +1,5 @@
+import { CMS_DOMAIN } from "@/utils";
+
 async function getArticleData() {
   return {
     title: "Hello SSR!",
