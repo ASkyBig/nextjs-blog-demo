@@ -1,6 +1,6 @@
 import axios from "axios";
-import { CMS_DOMAIN } from "@/utils";
 import { isEmpty } from "lodash";
+import { CMS_DOMAIN } from "@/utils";
 
 const getLayoutData = () => {
   return axios.get(`${CMS_DOMAIN}/api/layouts`).then((result) => {
