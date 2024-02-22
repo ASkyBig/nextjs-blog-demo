@@ -13,7 +13,7 @@ async function getArticlesByPageNo(pageNo: number = 1, pageSize: number = 5) {
       `${CMS_DOMAIN}/api/articles?pagination[page]=${pageNo}&pagination[pageSize]=${pageSize}`
     )
     .then((result) => {
-      return result.data;
+      return result.data.data;
     });
 }
 
