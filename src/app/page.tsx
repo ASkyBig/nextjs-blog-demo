@@ -10,7 +10,6 @@ const Home: FC = async () => {
 
   return (
     <main className={styles.main}>
-      <div className={styles.description}></div>
       <ArticleCom articles={articles} total={totalRes.length} />
     </main>
   );

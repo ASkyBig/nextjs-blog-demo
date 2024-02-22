@@ -1,12 +1,31 @@
-import { FC } from "react";
+"use client";
+import { FC, useContext } from "react";
 import styles from "./styles.module.scss";
+import { ThemeContext } from "@/stores/theme";
+import { Themes } from "@/constants/enum";
 
-export const Header: FC = () => {
+export interface INavBarProps {}
+
+const Header: FC = () => {
+  const { setTheme } = useContext(ThemeContext);
+
   return (
     <div className={styles.navBar}>
-      <a href="http://127.0.0.1:3000/">
-        <div className={styles.logoIcon}>header</div>
+      <a href="http://localhost:3000/">
+        <div>header</div>
       </a>
+      <div
+        className={styles.themeIcon}
+        onClick={(): void => {
+          if (localStorage.getItem("theme") === Themes.light) {
+            setTheme(Themes.dark);
+          } else {
+            setTheme(Themes.light);
+          }
+        }}
+      ></div>
     </div>
   );
 };
+
+export default Header;
