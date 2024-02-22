@@ -4,10 +4,8 @@ import "./globals.scss";
 import { Header } from "./components/header";
 import { Footer, IFooterProps } from "./components/footer";
 import { FC } from "react";
-import code from "../../public/code.png";
-import axios from "axios";
-import { LOCAL_DOMAIN } from "@/utils";
 import { getLayoutData } from "@api/layout";
+import { AntdRegistry } from "@ant-design/nextjs-registry";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,7 +29,7 @@ const RootLayout: FC<{ children: JSX.Element }> = async ({ children }) => {
     <html lang="en">
       <body className={inter.className}>
         <Header />
-        {children}
+        <AntdRegistry>{children}</AntdRegistry>
         <Footer {...data} />
       </body>
     </html>

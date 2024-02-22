@@ -7,4 +7,14 @@ async function getAllArticles() {
   });
 }
 
-export { getAllArticles };
+async function getArticlesByPageNo(pageNo: number = 1, pageSize: number = 5) {
+  return axios
+    .get(
+      `${CMS_DOMAIN}/api/articles?pagination[page]=${pageNo}&pagination[pageSize]=${pageSize}`
+    )
+    .then((result) => {
+      return result.data;
+    });
+}
+
+export { getAllArticles, getArticlesByPageNo };
