@@ -1,8 +1,7 @@
 "use client";
-import { FC, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import styles from "./styles.module.scss";
-import { LOCAL_DOMAIN } from "@/utils";
 import { Pagination } from "antd";
 import { getArticlesByPageNo } from "@/src/app/api/articles";
 
@@ -33,7 +32,7 @@ const ArticleCom = (data: IArticleComProps) => {
     <div>
       <div className={styles.grid}>
         {articles?.map((item: IArticle, index: number) => (
-          <Link href={`${LOCAL_DOMAIN}/article/${item.bid}`} key={index}>
+          <Link href={`/article/${item.bid}`} key={index}>
             <div className={styles.card}>
               <h2>{item.title} &rarr;</h2>
               <p>{item.desc}</p>

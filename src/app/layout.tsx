@@ -21,10 +21,6 @@ export const metadata: Metadata = {
 };
 
 const RootLayout: FC<{ children: JSX.Element }> = async ({ children }) => {
-  // const { footerData } = await getFooterData();
-
-  // const articleData = await getArticleData();
-  // console.log("articleData ++++", articleData);
   const data = await getLayoutData();
 
   return (

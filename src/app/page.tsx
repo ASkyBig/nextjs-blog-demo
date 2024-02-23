@@ -6,6 +6,7 @@ import ArticleCom from "./components/article";
 const Home: FC = async () => {
   // by default, only need one interface
   const articles = await getArticlesByPageNo(1);
+
   const totalRes = await getAllArticles();
 
   return <ArticleCom articles={articles} total={totalRes.length} />;
