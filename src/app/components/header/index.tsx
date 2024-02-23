@@ -3,6 +3,7 @@ import { FC, useContext } from "react";
 import styles from "./styles.module.scss";
 import { ThemeContext } from "@/stores/theme";
 import { Themes } from "@/constants/enum";
+import Links from "../navLink";
 
 export interface INavBarProps {}
 
@@ -11,9 +12,7 @@ const Header: FC = () => {
 
   return (
     <div className={styles.navBar}>
-      <a href="http://localhost:3000/">
-        <div>header</div>
-      </a>
+      <Links />
       <div
         className={styles.themeIcon}
         onClick={(): void => {

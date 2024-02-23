@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect, createContext } from "react";
 import { Themes } from "@/constants/enum";
+import { ConfigProvider, theme as ATheme } from "antd";
 
 interface IThemeContextProps {
   theme: Themes;
@@ -21,24 +22,30 @@ const ThemeContextProvider = ({ children }: IProps): JSX.Element => {
   useEffect(() => {
     const item = (localStorage.getItem("theme") as Themes) || Themes.light;
     setTheme(item);
-    console.log("item ++++", item);
-
     document.getElementsByTagName("html")[0].dataset.theme = item;
   }, []);
 
   return (
-    <ThemeContext.Provider
-      value={{
-        theme,
-        setTheme: (currentTheme) => {
-          setTheme(currentTheme);
-          localStorage.setItem("theme", currentTheme);
-          document.getElementsByTagName("html")[0].dataset.theme = currentTheme;
-        },
+    <ConfigProvider
+      theme={{
+        algorithm:
+          theme === "light" ? ATheme.defaultAlgorithm : ATheme.darkAlgorithm,
       }}
     >
-      {children}
-    </ThemeContext.Provider>
+      <ThemeContext.Provider
+        value={{
+          theme,
+          setTheme: (currentTheme) => {
+            setTheme(currentTheme);
+            localStorage.setItem("theme", currentTheme);
+            document.getElementsByTagName("html")[0].dataset.theme =
+              currentTheme;
+          },
+        }}
+      >
+        {children}
+      </ThemeContext.Provider>
+    </ConfigProvider>
   );
 };
 

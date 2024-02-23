@@ -1,11 +1,11 @@
 .main {
-  background-color: var(--primary-background-color);
+  /* background-color: var(--primary-background-color); */
   /* .main {
     min-height: calc(100vh - 34.85rem);
   } */
   min-height: calc(100vh - 34.85rem);
   padding: 0 2rem;
-  color: var(--primary-color);
+  /* color: var(--primary-color); */
   /* min-height: 100vh; */
   padding: 4rem 0;
   flex: 1;

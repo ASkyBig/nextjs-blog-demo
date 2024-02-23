@@ -1,0 +1,9 @@
+.container {
+  display: flex;
+  .link {
+    margin: 8px;
+  }
+  .link_active {
+    color: #5295e5;
+  }
+}
