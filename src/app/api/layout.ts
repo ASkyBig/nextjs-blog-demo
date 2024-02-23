@@ -18,4 +18,4 @@ const getLayoutData = () => {
   });
 };
 
-export { getLayoutData };
+export default getLayoutData;

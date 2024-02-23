@@ -4,9 +4,10 @@ import "./globals.scss";
 import Header from "./components/header";
 import { Footer, IFooterProps } from "./components/footer";
 import { FC } from "react";
-import { getLayoutData } from "@api/layout";
+import getLayoutData from "@api/layout";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import ThemeContextProvider from "@/stores/theme";
+import styles from "./page.module.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,7 +32,9 @@ const RootLayout: FC<{ children: JSX.Element }> = async ({ children }) => {
       <ThemeContextProvider>
         <body className={inter.className}>
           <Header />
-          <AntdRegistry>{children}</AntdRegistry>
+          <AntdRegistry>
+            <main className={styles.main}>{children}</main>
+          </AntdRegistry>
           <Footer {...data} />
         </body>
       </ThemeContextProvider>

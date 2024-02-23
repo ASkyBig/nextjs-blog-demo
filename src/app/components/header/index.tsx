@@ -11,7 +11,7 @@ const Header: FC = () => {
   const { setTheme } = useContext(ThemeContext);
 
   return (
-    <div className={styles.navBar}>
+    <div className={styles.header}>
       <Links />
       <div
         className={styles.themeIcon}

@@ -29,7 +29,9 @@ const ThemeContextProvider = ({ children }: IProps): JSX.Element => {
     <ConfigProvider
       theme={{
         algorithm:
-          theme === "light" ? ATheme.defaultAlgorithm : ATheme.darkAlgorithm,
+          theme === Themes.light
+            ? ATheme.defaultAlgorithm
+            : ATheme.darkAlgorithm,
       }}
     >
       <ThemeContext.Provider

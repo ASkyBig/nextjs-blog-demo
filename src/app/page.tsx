@@ -8,11 +8,7 @@ const Home: FC = async () => {
   const articles = await getArticlesByPageNo(1);
   const totalRes = await getAllArticles();
 
-  return (
-    <main className={styles.main}>
-      <ArticleCom articles={articles} total={totalRes.length} />
-    </main>
-  );
+  return <ArticleCom articles={articles} total={totalRes.length} />;
 };
 
 export default Home;
