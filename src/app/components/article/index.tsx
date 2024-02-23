@@ -11,6 +11,7 @@ interface IArticle {
   desc: string;
   link: string;
   content: string;
+  author: string;
 }
 
 interface IArticleComProps {
@@ -24,7 +25,27 @@ const ArticleCom = (data: IArticleComProps) => {
 
   const handlePageChange = (pageNo: number) => {
     getArticlesByPageNo(pageNo).then((res) => {
-      setArticles(res);
+      // setArticles(res);
+      if (pageNo > 1) {
+        setArticles([
+          {
+            title: "文章6",
+            author: "神灵",
+            desc: "这是神灵的文章",
+            content: "我是神灵",
+            link: "6",
+            bid: "6",
+          },
+          {
+            title: "7",
+            author: "白虎",
+            desc: "这是白虎的文章",
+            content: "我是白虎",
+            link: "7",
+            bid: "7",
+          },
+        ]);
+      }
     });
   };
 
