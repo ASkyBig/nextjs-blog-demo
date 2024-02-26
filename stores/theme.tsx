@@ -20,9 +20,16 @@ const ThemeContextProvider = ({ children }: IProps): JSX.Element => {
   const [theme, setTheme] = useState<Themes>(Themes.light);
 
   useEffect(() => {
-    const item = (localStorage.getItem("theme") as Themes) || Themes.light;
-    setTheme(item);
-    document.getElementsByTagName("html")[0].dataset.theme = item;
+    const checkTheme = (): void => {
+      const item = (localStorage.getItem("theme") as Themes) || Themes.light;
+      setTheme(item);
+      document.getElementsByTagName("html")[0].dataset.theme = item;
+    };
+    checkTheme();
+    window.addEventListener("storage", checkTheme);
+    return (): void => {
+      window.removeEventListener("storage", checkTheme);
+    };
   }, []);
 
   return (
