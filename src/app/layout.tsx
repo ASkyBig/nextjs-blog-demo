@@ -8,6 +8,7 @@ import getLayoutData from "@api/layout";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import ThemeContextProvider from "@/stores/theme";
 import styles from "./page.module.css";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -32,6 +33,12 @@ const RootLayout: FC<{ children: JSX.Element }> = async ({ children }) => {
             <main className={styles.main}>{children}</main>
           </AntdRegistry>
           <Footer {...data} />
+          <Script id="theme-script" strategy="beforeInteractive">
+            {`const item = localStorage.getItem('theme') || 'light';
+            console.log('item +++++', item);
+          localStorage.setItem('theme', item);
+          document.getElementsByTagName('html')[0].dataset.theme = item;`}
+          </Script>
         </body>
       </ThemeContextProvider>
     </html>
