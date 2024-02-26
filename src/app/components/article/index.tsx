@@ -5,11 +5,12 @@ import styles from "./styles.module.scss";
 import { Pagination } from "antd";
 import { getArticlesByPageNo } from "@/src/app/api/articles";
 
-interface IArticle {
-  bid: string;
+export interface IArticle {
+  id: string;
+  bid?: string;
   title: string;
   desc: string;
-  link: string;
+  link?: string;
   content: string;
   author: string;
 }
@@ -23,29 +24,9 @@ const ArticleCom = (data: IArticleComProps) => {
   const [articles, setArticles] = useState(data.articles || []);
   const [total, setTotal] = useState(data.total || 0);
 
-  const handlePageChange = (pageNo: number) => {
+  const handlePageChange = (pageNo: number): void => {
     getArticlesByPageNo(pageNo).then((res) => {
-      // setArticles(res);
-      if (pageNo > 1) {
-        setArticles([
-          {
-            title: "文章6",
-            author: "神灵",
-            desc: "这是神灵的文章",
-            content: "我是神灵",
-            link: "6",
-            bid: "6",
-          },
-          {
-            title: "7",
-            author: "白虎",
-            desc: "这是白虎的文章",
-            content: "我是白虎",
-            link: "7",
-            bid: "7",
-          },
-        ]);
-      }
+      setArticles(res);
     });
   };
 
@@ -53,7 +34,7 @@ const ArticleCom = (data: IArticleComProps) => {
     <div>
       <div className={styles.grid}>
         {articles?.map((item: IArticle, index: number) => (
-          <Link href={`/article/${item.bid}`} key={index}>
+          <Link href={`/article/${item.id}`} key={index}>
             <div className={styles.card}>
               <h2>{item.title} &rarr;</h2>
               <p>{item.desc}</p>

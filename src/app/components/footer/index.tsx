@@ -1,6 +1,7 @@
 "use client";
 import { FC } from "react";
 import { StaticImageData } from "next/image";
+import { usePathname } from "next/navigation";
 import styles from "./styles.module.scss";
 
 interface ILink {
@@ -24,10 +25,14 @@ export interface IFooterProps {
 }
 
 export const Footer: FC<IFooterProps> = ({ title, linkList }) => {
+  const pathname = usePathname();
+
   const year = new Date().getFullYear();
+  const isArticleDetailPage = pathname.includes("/article/");
+  if (isArticleDetailPage) return null;
   return (
     <div className={styles.copyright}>
-      YJ © Copyright {year}. All Rights Reserved.
+      YJ. © Copyright {year}. All Rights Reserved.
     </div>
   );
   // return (
