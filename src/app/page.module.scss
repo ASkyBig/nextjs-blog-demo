@@ -1,6 +1,7 @@
+@import "./media.scss";
 .main {
   min-height: calc(100vh - var(--headerHeight) - var(--footerHeight));
-  padding: 32px;
+  padding: 2rem;
 
   .header {
     background-image: var(--home-background-icon);
@@ -92,7 +93,7 @@
     width: 62.5rem;
     display: flex;
     justify-content: flex-end;
-    padding: 20px 0;
+    padding: 1.25rem 0;
   }
 }
 
@@ -130,117 +131,117 @@
   }
 }
 
-@keyframes fadeInDown1 {
-  0% {
-    @include initStatus;
-  }
+// @keyframes fadeInDown1 {
+//   0% {
+//     @include initStatus;
+//   }
 
-  11% {
-    @include initStatus;
-  }
+//   11% {
+//     @include initStatus;
+//   }
 
-  100% {
-    @include finalStatus;
-  }
-}
+//   100% {
+//     @include finalStatus;
+//   }
+// }
 
-@keyframes fadeInDown2 {
-  0% {
-    @include initStatus;
-  }
+// @keyframes fadeInDown2 {
+//   0% {
+//     @include initStatus;
+//   }
 
-  22% {
-    @include initStatus;
-  }
+//   22% {
+//     @include initStatus;
+//   }
 
-  100% {
-    @include finalStatus;
-  }
-}
+//   100% {
+//     @include finalStatus;
+//   }
+// }
 
-@keyframes fadeInDown3 {
-  0% {
-    @include initStatus;
-  }
+// @keyframes fadeInDown3 {
+//   0% {
+//     @include initStatus;
+//   }
 
-  33% {
-    @include initStatus;
-  }
+//   33% {
+//     @include initStatus;
+//   }
 
-  100% {
-    @include finalStatus;
-  }
-}
+//   100% {
+//     @include finalStatus;
+//   }
+// }
 
-@keyframes fadeInDown4 {
-  0% {
-    @include initStatus;
-  }
+// @keyframes fadeInDown4 {
+//   0% {
+//     @include initStatus;
+//   }
 
-  44% {
-    @include initStatus;
-  }
+//   44% {
+//     @include initStatus;
+//   }
 
-  100% {
-    @include finalStatus;
-  }
-}
+//   100% {
+//     @include finalStatus;
+//   }
+// }
 
-@keyframes fadeInDown5 {
-  0% {
-    @include initStatus;
-  }
+// @keyframes fadeInDown5 {
+//   0% {
+//     @include initStatus;
+//   }
 
-  55% {
-    @include initStatus;
-  }
+//   55% {
+//     @include initStatus;
+//   }
 
-  100% {
-    @include finalStatus;
-  }
-}
+//   100% {
+//     @include finalStatus;
+//   }
+// }
 
-@keyframes fadeInDown6 {
-  0% {
-    @include initStatus;
-  }
+// @keyframes fadeInDown6 {
+//   0% {
+//     @include initStatus;
+//   }
 
-  66% {
-    @include initStatus;
-  }
+//   66% {
+//     @include initStatus;
+//   }
 
-  100% {
-    @include finalStatus;
-  }
-}
+//   100% {
+//     @include finalStatus;
+//   }
+// }
 
-@keyframes fadeInDown7 {
-  0% {
-    @include initStatus;
-  }
+// @keyframes fadeInDown7 {
+//   0% {
+//     @include initStatus;
+//   }
 
-  77% {
-    @include initStatus;
-  }
+//   77% {
+//     @include initStatus;
+//   }
 
-  100% {
-    @include finalStatus;
-  }
-}
+//   100% {
+//     @include finalStatus;
+//   }
+// }
 
-@keyframes fadeInDown8 {
-  0% {
-    @include initStatus;
-  }
+// @keyframes fadeInDown8 {
+//   0% {
+//     @include initStatus;
+//   }
 
-  88% {
-    @include initStatus;
-  }
+//   88% {
+//     @include initStatus;
+//   }
 
-  100% {
-    @include finalStatus;
-  }
-}
+//   100% {
+//     @include finalStatus;
+//   }
+// }
 
 .description {
   display: inherit;
@@ -319,15 +320,15 @@
 .center::before {
   background: var(--secondary-glow);
   border-radius: 50%;
-  width: 480px;
-  height: 360px;
-  margin-left: -400px;
+  width: 30rem;
+  height: 22.5rem;
+  margin-left: -25rem;
 }
 
 .center::after {
   background: var(--primary-glow);
-  width: 240px;
-  height: 180px;
+  width: 15rem;
+  height: 11.25rem;
   z-index: -1;
 }
 
@@ -336,7 +337,7 @@
   content: "";
   left: 50%;
   position: absolute;
-  filter: blur(45px);
+  filter: blur(2.8125rem);
   transform: translateZ(0);
 }
 
@@ -351,7 +352,7 @@
   }
 
   .card:hover span {
-    transform: translateX(4px);
+    transform: translateX(0.25rem);
   }
 }
 
@@ -362,15 +363,15 @@
 }
 
 /* Mobile */
-@media (max-width: 700px) {
+@media (max-width: 43.75rem) {
   .content {
     padding: 4rem;
   }
 
   .grid {
     grid-template-columns: 1fr;
-    margin-bottom: 120px;
-    max-width: 320px;
+    margin-bottom: 7.5rem;
+    max-width: 20rem;
     text-align: center;
   }
 
@@ -388,7 +389,7 @@
 
   .center::before {
     transform: none;
-    height: 300px;
+    height: 18.75rem;
   }
 
   .description {
@@ -420,7 +421,7 @@
       rgba(var(--callout-rgb), 0.5)
     );
     background-clip: padding-box;
-    backdrop-filter: blur(24px);
+    backdrop-filter: blur(1.5rem);
   }
 
   .description div {
@@ -428,7 +429,7 @@
     pointer-events: none;
     inset: auto 0 0;
     padding: 2rem;
-    height: 200px;
+    height: 12.5rem;
     background: linear-gradient(
       to bottom,
       transparent 0%,
@@ -439,7 +440,7 @@
 }
 
 /* Tablet and Smaller Desktop */
-@media (min-width: 701px) and (max-width: 1120px) {
+@media (min-width: 45rem) and (max-width: 70rem) {
   .grid {
     grid-template-columns: repeat(2, 50%);
   }

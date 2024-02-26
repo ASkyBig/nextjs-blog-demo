@@ -18,6 +18,9 @@
     background-size: 4.375rem 1.25rem;
     background-repeat: no-repeat;
   }
+  .text {
+    font-size: 0.75rem;
+  }
 
   .themeArea {
     display: flex;
@@ -42,4 +45,5 @@
   background-size: 1.25rem 1.25rem;
   background-repeat: no-repeat;
   cursor: pointer;
+  margin-left: 1rem;
 }

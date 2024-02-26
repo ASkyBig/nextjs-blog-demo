@@ -1,47 +1,4 @@
-// .footer {
-//   border-top: 1px solid #f1f1f1;
-//   height: 100px;
-//   padding: 24px;
-//   display: flex;
-//   justify-content: space-between;
-//   overflow: hidden;
-
-//   .footerTitle {
-//     font-weight: 500;
-//     font-size: 36px;
-//     line-height: 36px;
-//     margin: 0;
-//   }
-
-//   .linkListArea {
-//     display: flex;
-//     width: 100%;
-//     .linkArea {
-//       display: flex;
-//       flex-direction: column;
-//       margin-left: 160px;
-
-//       .links {
-//         display: flex;
-//         flex-direction: column;
-//         font-weight: 400;
-//         font-size: 14px;
-//         line-height: 20px;
-
-//         .link {
-//           cursor: pointer;
-//           margin-bottom: 8px;
-//         }
-
-//         .disabled {
-//           cursor: not-allowed;
-//           margin-bottom: 8px;
-//         }
-//       }
-//     }
-//   }
-// }
-
+@import "../../media.scss";
 .copyright {
   display: flex;
   justify-content: center;
@@ -49,6 +6,18 @@
   border-top: 1px solid #f1f1f1;
   height: var(--footerHeight);
   text-align: center;
-  font-size: 12px;
+  font-size: 0.8rem;
   font-weight: 400;
+}
+
+@include media-ipad {
+  .copyright {
+    font-size: 0.7rem;
+  }
+}
+
+@include media-mobile {
+  .copyright {
+    font-size: 0.6rem;
+  }
 }

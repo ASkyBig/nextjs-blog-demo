@@ -1,7 +1,8 @@
 .container {
   display: flex;
+  margin-right: auto;
   .link {
-    margin: 8px;
+    margin: 0.5rem;
   }
   .link_active {
     color: #5295e5;
