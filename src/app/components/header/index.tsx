@@ -8,7 +8,7 @@ import Links from "../navLink";
 
 export interface INavBarProps {}
 interface IData {
-  isMobile: boolean;
+  isMobile?: boolean;
 }
 
 const Header = (data: IData) => {

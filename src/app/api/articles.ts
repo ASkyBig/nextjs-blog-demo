@@ -145,7 +145,6 @@ async function getArticlesByPageNo(pageNo: number = 1, pageSize: number = 5) {
 
 async function getArticleById(id: string) {
   const { rows, fields } = await sql`SELECT * FROM Blogs where id=${id};`;
-  console.log("rows ++++++", rows);
   // return axios.get(`/api/articles/${id}`).then((result) => {
   //   console.log("result.data.data", result.data.data);
   //   return result.data.data;
