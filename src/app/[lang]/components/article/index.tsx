@@ -3,7 +3,7 @@ import { useState } from "react";
 import Link from "next/link";
 import styles from "./styles.module.scss";
 import { Pagination } from "antd";
-import { getArticlesByPageNo } from "@/src/app/api/articles";
+import { getArticlesByPageNo } from "@api/articles";
 
 export interface IArticle {
   id: string;

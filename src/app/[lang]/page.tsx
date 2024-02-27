@@ -3,6 +3,7 @@ import { getAllArticles, getArticlesByPageNo } from "@api/articles";
 import ArticleCom from "./components/article";
 import { sql } from "@vercel/postgres";
 import { IArticle } from "./components/article/index";
+
 const pageSize = 5; // Number of records per page
 const pageNumber = 1; // Specific page number
 const offset = (pageNumber - 1) * pageSize;

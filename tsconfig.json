@@ -19,7 +19,8 @@
     ],
     "paths": {
       "@/*": ["./*"],
-      "@api/*": ["./src/app/api/*"]
+      "@public/*": ["./public/*"],
+      "@api/*": ["./src/app/[lang]/api/*"]
     }
   },
   "include": [
@@ -27,9 +28,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/(detail)/(layout.tsx)",
-    "src/app/(detail)/(layout1.tsx)",
     "src/app/layout.tsx"
-  ],
+, "src/app/[lang]/dictionaries.js"  ],
   "exclude": ["node_modules"]
 }

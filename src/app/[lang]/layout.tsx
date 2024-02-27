@@ -12,6 +12,7 @@ import styles from "./page.module.scss";
 import Script from "next/script";
 import { getIsMobile } from "@/utils";
 import { headers } from "next/headers";
+import { getDictionary } from "./dictionaries";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,17 +30,21 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-const RootLayout: FC<{ children: JSX.Element }> = async ({ children }) => {
+const RootLayout: FC<{
+  children: JSX.Element;
+  params: { lang: string };
+}> = async ({ children, params }) => {
   const data = await getLayoutData();
   const headersList = headers();
   const isMobile = getIsMobile(headersList.get("user-agent"));
+  const dict = await getDictionary(params.lang);
 
   return (
-    <html lang="en">
+    <html lang={params.lang}>
       <ThemeContextProvider>
         <UserAgentProvider>
           <body className={inter.className}>
-            <Header isMobile={isMobile} />
+            <Header isMobile={isMobile} dict={dict} />
             <AntdRegistry>
               <main className={styles.main}>{children}</main>
             </AntdRegistry>

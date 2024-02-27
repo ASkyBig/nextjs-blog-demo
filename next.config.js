@@ -8,7 +8,8 @@ const nextConfig = {
     config.resolve.alias = {
       ...config.resolve.alias,
       "@": path.resolve(__dirname),
-      "@api": path.resolve(__dirname, "src/app/api"),
+      "@public": path.resolve(__dirname, "public"),
+      "@api": path.resolve(__dirname, "src/app/[lang]/api"),
     };
     return config;
   },
