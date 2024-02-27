@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -19,8 +20,8 @@
     ],
     "paths": {
       "@/*": ["./*"],
-      "@public/*": ["./public/*"],
-      "@api/*": ["./src/app/[lang]/api/*"]
+      "@api/*": ["./src/app/api/*"],
+      "@assets/*": ["./src/assets/*"]
     }
   },
   "include": [
@@ -28,7 +29,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/layout.tsx"
-, "src/app/[lang]/dictionaries.js"  ],
+    "src/app/layout.tsx",
+    "src/app/[lang]/dictionaries.js"
+  ],
   "exclude": ["node_modules"]
 }
