@@ -18,6 +18,7 @@ export interface IArticle {
 interface IArticleComProps {
   articles: IArticle[];
   total: number;
+  lang: string;
 }
 
 const ArticleCom = (data: IArticleComProps) => {
@@ -34,7 +35,7 @@ const ArticleCom = (data: IArticleComProps) => {
     <div>
       <div className={styles.grid}>
         {articles?.map((item: IArticle, index: number) => (
-          <Link href={`/article/${item.id}`} key={index}>
+          <Link href={`${data.lang}/article/${item.id}`} key={index}>
             <div className={styles.card}>
               <h2>{item.title} &rarr;</h2>
               <p>{item.desc}</p>

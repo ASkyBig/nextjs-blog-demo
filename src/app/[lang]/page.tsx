@@ -8,7 +8,9 @@ const pageSize = 5; // Number of records per page
 const pageNumber = 1; // Specific page number
 const offset = (pageNumber - 1) * pageSize;
 
-const Home: FC = async () => {
+const Home: FC<{
+  params: { lang: string };
+}> = async ({ params }) => {
   // by default, only need one interface
   // const articles = await getArticlesByPageNo(1);
 
@@ -21,7 +23,13 @@ const Home: FC = async () => {
   const { rows: CountRows } =
     await sql`SELECT COUNT(*) AS total_count FROM Blogs;`;
 
-  return <ArticleCom articles={rows} total={CountRows[0].total_count} />;
+  return (
+    <ArticleCom
+      articles={rows}
+      total={CountRows[0].total_count}
+      lang={params.lang}
+    />
+  );
 };
 
 export default Home;
