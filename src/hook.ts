@@ -1,4 +1,3 @@
-// hooks.ts
 import { useTranslation } from "react-i18next";
 import { ITran } from "./app/i18n/type";
 import { usePathname, useRouter } from "next/navigation";
