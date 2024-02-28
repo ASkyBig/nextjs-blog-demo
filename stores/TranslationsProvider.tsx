@@ -1,4 +1,3 @@
-// TranslationsProvider.tsx
 "use client";
 
 import initTranslations from "../src/app/i18n";
