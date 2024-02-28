@@ -40,7 +40,7 @@ const RootLayout: FC<{
   const dict = await getDictionary(params.lang);
 
   return (
-    <html lang={params.lang}>
+    <html lang={params.lang} suppressHydrationWarning>
       <ThemeContextProvider>
         <UserAgentProvider>
           <body className={inter.className}>

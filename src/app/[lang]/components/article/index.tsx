@@ -23,7 +23,8 @@ interface IArticleComProps {
 
 const ArticleCom = (data: IArticleComProps) => {
   const [articles, setArticles] = useState(data.articles || []);
-  const [total, setTotal] = useState(data.total || 0);
+  const total = data.total;
+  // const [total, _] = useState(data.total || 0);
 
   const handlePageChange = (pageNo: number): void => {
     getArticlesByPageNo(pageNo).then((res) => {

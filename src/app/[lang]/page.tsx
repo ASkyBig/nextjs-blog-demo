@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { getAllArticles, getArticlesByPageNo } from "@api/articles";
+// import { getAllArticles, getArticlesByPageNo } from "@api/articles";
 import ArticleCom from "./components/article";
 import { sql } from "@vercel/postgres";
 import { IArticle } from "./components/article/index";
@@ -13,10 +13,8 @@ const Home: FC<{
 }> = async ({ params }) => {
   // by default, only need one interface
   // const articles = await getArticlesByPageNo(1);
-
   // const totalRes = await getAllArticles();
 
-  // const res = await sql`SELECT * FROM Blogs;`;
   const { rows, fields }: { rows: IArticle[]; fields: any } =
     await sql`SELECT * FROM Blogs LIMIT ${pageSize} OFFSET ${offset};`;
 
