@@ -13,6 +13,10 @@ import Script from "next/script";
 import { getIsMobile } from "@/utils";
 import { headers } from "next/headers";
 import { getDictionary } from "./dictionaries";
+import i18nConfig, { getNamespaces } from "../i18n/i18nConfig";
+import React from "react";
+import TranslationsProvider from "../../../stores/TranslationsProvider";
+import initTranslations from "../i18n";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,33 +34,47 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
+export function generateStaticParams() {
+  return i18nConfig.locales.map((locale) => ({ locale }));
+}
+
 const RootLayout: FC<{
   children: JSX.Element;
-  params: { lang: string };
+  params: { lang: string; locale: string };
 }> = async ({ children, params }) => {
   const data = await getLayoutData();
   const headersList = headers();
   const isMobile = getIsMobile(headersList.get("user-agent"));
-  const dict = await getDictionary(params.lang);
+  // const dict = await getDictionary(params.lang);
+  const dict = {};
+
+  const ns = getNamespaces();
+  const { resources } = await initTranslations(params.lang, ns);
 
   return (
     <html lang={params.lang} suppressHydrationWarning>
-      <ThemeContextProvider>
-        <UserAgentProvider>
-          <body className={inter.className}>
-            <Header isMobile={isMobile} dict={dict} />
-            <AntdRegistry>
-              <main className={styles.main}>{children}</main>
-            </AntdRegistry>
-            <Footer {...data} />
-            <Script id="theme-script" strategy="beforeInteractive">
-              {`const item = localStorage.getItem('theme') || 'light';
+      <TranslationsProvider
+        namespaces={ns}
+        locale={params.lang}
+        resources={resources}
+      >
+        <ThemeContextProvider>
+          <UserAgentProvider>
+            <body className={inter.className}>
+              <Header isMobile={isMobile} dict={dict} />
+              <AntdRegistry>
+                <main className={styles.main}>{children}</main>
+              </AntdRegistry>
+              <Footer {...data} />
+              <Script id="theme-script" strategy="beforeInteractive">
+                {`const item = localStorage.getItem('theme') || 'light';
           localStorage.setItem('theme', item);
           document.getElementsByTagName('html')[0].dataset.theme = item;`}
-            </Script>
-          </body>
-        </UserAgentProvider>
-      </ThemeContextProvider>
+              </Script>
+            </body>
+          </UserAgentProvider>
+        </ThemeContextProvider>
+      </TranslationsProvider>
     </html>
   );
 };

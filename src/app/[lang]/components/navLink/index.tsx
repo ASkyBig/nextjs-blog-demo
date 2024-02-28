@@ -4,10 +4,14 @@ import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import styles from "./styles.module.scss";
 
+import { useClientTranslation } from "../../../../hook";
+
 export default function Links({ dict }: any) {
   const pathname = usePathname();
   const router = useRouter();
   const isEn = /^\/en/.test(usePathname());
+
+  const { t } = useClientTranslation();
 
   const isHomePath = /^\/(zh|en)$/.test(pathname);
   const isAboutPath = /^\/(zh|en)\/about$/.test(pathname);
@@ -22,7 +26,8 @@ export default function Links({ dict }: any) {
         }`}
         href={homePath}
       >
-        {dict.home}
+        {/* {dict.home} */}
+        {t("home")}
       </Link>
 
       <Link
@@ -31,7 +36,8 @@ export default function Links({ dict }: any) {
         }`}
         href={aboutPath}
       >
-        {dict.about}
+        {/* {dict.about} */}
+        {t("about")}
       </Link>
       {/* <div
         className={`${styles.link} ${

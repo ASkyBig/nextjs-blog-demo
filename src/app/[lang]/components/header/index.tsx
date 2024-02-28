@@ -7,6 +7,7 @@ import { Environment, Themes } from "@/constants/enum";
 import Links from "../navLink";
 import { useRouter, usePathname } from "next/navigation";
 
+import { useChangeLanguage } from "../../../../hook";
 export interface INavBarProps {}
 interface IData {
   isMobile?: boolean;
@@ -14,17 +15,19 @@ interface IData {
 }
 
 const Header = (data: IData) => {
-  const router = useRouter();
   const pathname = usePathname();
 
   const { setTheme } = useContext(ThemeContext);
   const { userAgent } = useContext(UserAgentContext);
 
+  const { currentLocale, handleChange } = useChangeLanguage();
+
   const isEn = pathname.includes("en");
 
   const changeLang = (e: ChangeEvent<HTMLSelectElement>) => {
-    const rePathname = pathname.replace(/(zh|en)/, e.target.value);
-    router.push(rePathname);
+    // const rePathname = pathname.replace(/(zh|en)/, e.target.value);
+    // router.push(rePathname);
+    handleChange(e.target.value);
   };
 
   return (
