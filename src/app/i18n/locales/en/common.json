@@ -1,5 +1,11 @@
 {
   "about": "about",
   "home": "home",
-  "currentDeviceType": "current is {{device}}"
+  "currentDeviceType": "current is {{device}}",
+  "hobby": "I like singing, jumping, basketball.",
+  "About Me": "About Me",
+  "how to reach me": "how to reach me",
+  "Where am I": "Where am I",
+  "shanghai": "shanghai",
+  "wechat": "wechat"
 }

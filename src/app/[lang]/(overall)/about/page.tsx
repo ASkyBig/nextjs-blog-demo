@@ -1,14 +1,21 @@
 import type { NextPage } from "next";
+import initTranslations from "../../../i18n";
 
-const About: NextPage = () => {
+import Content from "./components/content";
+const About: NextPage = async (params: any) => {
+  // const { t } = await initTranslations(params.params.lang);
+
+  // const { t } = useTranslation("en");
+
   return (
     <>
-      <h1>About Me</h1>
-      <p>I like sing, jump, rap.</p>
-      <h2>Q: How to reach me</h2>
-      <p>A: wechat: empzd2s4MTg=</p>
-      <h2>Q: Where am I</h2>
-      <p>A: Shanghai</p>
+      <Content />
+      {/* <h1>{t("About Me")}</h1>
+      <p>{t("hobby")}</p>
+      <h2>{t("how to reach me")}</h2>
+      <p>{t("wechat")}: empzd2s4MTg=</p>
+      <h2>{t("Where am I")}</h2>
+      <p>{t("shanghai")}</p> */}
     </>
   );
 };

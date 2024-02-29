@@ -1,1 +1,11 @@
-{ "about": "关于", "home": "首页", "currentDeviceType": "当前是{{device}}" }
+{
+  "about": "关于",
+  "home": "首页",
+  "currentDeviceType": "当前是{{device}}",
+  "hobby": "唱，跳，篮球",
+  "About Me": "关于我",
+  "how to reach me": "联系我",
+  "Where am I": "地点",
+  "shanghai": "上海",
+  "wechat": "微信"
+}
