@@ -2,7 +2,8 @@
 const path = require("path");
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
+  productionBrowserSourceMaps: true,
+  // swcMinify: true,
   /* config options here */
   webpack(config) {
     config.resolve.alias = {

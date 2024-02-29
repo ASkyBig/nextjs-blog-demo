@@ -34,9 +34,9 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export function generateStaticParams() {
-  return i18nConfig.locales.map((locale) => ({ locale }));
-}
+// export function generateStaticParams() {
+//   return i18nConfig.locales.map((locale) => ({ locale }));
+// }
 
 const RootLayout: FC<{
   children: JSX.Element;
