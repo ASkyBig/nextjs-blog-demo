@@ -26,5 +26,6 @@ export function getOptions(
 const i18nConfig = {
   defaultLocale: "zh",
   locales: ["zh", "en"],
+  prefixDefault: true,
 };
 export default i18nConfig;

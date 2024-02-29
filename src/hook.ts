@@ -13,7 +13,6 @@ export function useClientTranslation() {
   return { t, i18n } as { t: ITran; i18n: i18n };
 }
 
-// 改变语言的hook
 export function useChangeLanguage() {
   const { i18n } = useTranslation();
   const currentLocale = i18n.language;
@@ -28,16 +27,15 @@ export function useChangeLanguage() {
     date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
     const expires = "; expires=" + date.toUTCString();
     document.cookie = `NEXT_LOCALE=${newLocale};expires=${expires};path=/`;
-    console.log("currentLocale +++++", currentLocale);
-    console.log("defaultLocale +++++", i18nConfig.defaultLocale);
+    // if (currentLocale === i18nConfig.defaultLocale) {
+    //   router.push("/" + newLocale + currentPathname);
+    // } else {
+    //   router.push(
+    //     currentPathname.replace(`/${currentLocale}`, `/${newLocale}`)
+    //   );
+    // }
 
-    if (currentLocale === i18nConfig.defaultLocale) {
-      router.push("/" + newLocale + currentPathname);
-    } else {
-      router.push(
-        currentPathname.replace(`/${currentLocale}`, `/${newLocale}`)
-      );
-    }
+    router.push(currentPathname.replace(`/${currentLocale}`, `/${newLocale}`));
   };
   return { currentLocale, handleChange };
 }

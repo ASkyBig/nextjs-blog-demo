@@ -1,22 +1,24 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
+import Script from "next/script";
+import React, { FC } from "react";
 import { Inter } from "next/font/google";
-import "./globals.scss";
-import Header from "./components/header";
-import { Footer, IFooterProps } from "./components/footer";
-import { FC } from "react";
-import getLayoutData from "@api/layout";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
+
+import Header from "@components/header";
+import { Footer, IFooterProps } from "@components/footer";
+import getLayoutData from "@api/layout";
 import ThemeContextProvider from "@/stores/theme";
 import UserAgentProvider from "@/stores/userAgent";
-import styles from "./page.module.scss";
-import Script from "next/script";
+import TranslationsProvider from "@/stores/TranslationsProvider";
+
 import { getIsMobile } from "@/utils";
-import { headers } from "next/headers";
-import { getDictionary } from "./dictionaries";
-import i18nConfig, { getNamespaces } from "../i18n/i18nConfig";
-import React from "react";
-import TranslationsProvider from "../../../stores/TranslationsProvider";
-import initTranslations from "../i18n";
+// import { getDictionary } from "./dictionaries";
+import initTranslations from "@i18n/index";
+import i18nConfig, { getNamespaces } from "@i18n/i18nConfig";
+
+import styles from "./page.module.scss";
+import "./globals.scss";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -34,9 +36,9 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-// export function generateStaticParams() {
-//   return i18nConfig.locales.map((locale) => ({ locale }));
-// }
+export function generateStaticParams() {
+  return i18nConfig.locales.map((locale) => ({ lang: locale }));
+}
 
 const RootLayout: FC<{
   children: JSX.Element;

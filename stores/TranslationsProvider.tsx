@@ -1,5 +1,4 @@
 "use client";
-
 import initTranslations from "../src/app/i18n";
 import { tranInstanceManager } from "../src/hook";
 import { Resource, createInstance } from "i18next";
