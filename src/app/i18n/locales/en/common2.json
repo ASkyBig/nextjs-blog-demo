@@ -1,1 +1,5 @@
-{ "about": "en_about", "home": "en_home" }
+{
+  "about": "about",
+  "home": "home",
+  "currentDeviceType": "current is {{device}}"
+}

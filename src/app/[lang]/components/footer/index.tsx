@@ -1,8 +1,12 @@
 "use client";
-import { FC } from "react";
+import { FC, useContext } from "react";
 import { StaticImageData } from "next/image";
 import { usePathname } from "next/navigation";
+import { UserAgentContext } from "@/stores/userAgent";
+
 import styles from "./styles.module.scss";
+import { Environment } from "@/constants/enum";
+import { useTranslation } from "react-i18next";
 
 interface ILink {
   label: string;
@@ -26,14 +30,34 @@ export interface IFooterProps {
 
 export const Footer: FC<IFooterProps> = ({ title, linkList }) => {
   const pathname = usePathname();
+  const { userAgent } = useContext(UserAgentContext);
+  const { t } = useTranslation();
 
   const year = new Date().getFullYear();
   const isArticleDetailPage = pathname.includes("/article/");
   if (isArticleDetailPage) return null;
   return (
-    <div className={styles.copyright}>
-      YJ. © Copyright {year}. All Rights Reserved.
-    </div>
+    <>
+      <div className={styles.copyright}>
+        YJ. © Copyright {year}. All Rights Reserved.{" "}
+        {userAgent === Environment.pc && (
+          <span className={styles.text}>
+            ({t("currentDeviceType", { device: "pc" })})
+          </span>
+        )}
+        {userAgent === Environment.ipad && (
+          <span className={styles.text}>
+            ({t("currentDeviceType", { device: "ipad" })})
+          </span>
+        )}
+        {userAgent === Environment.mobile && (
+          <span className={styles.text}>
+            {" "}
+            ({t("currentDeviceType", { device: "mobile" })})
+          </span>
+        )}
+      </div>
+    </>
   );
   // return (
   //   <div className={styles.footer}>

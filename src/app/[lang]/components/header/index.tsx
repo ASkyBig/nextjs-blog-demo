@@ -1,13 +1,19 @@
 "use client";
-import { ChangeEvent, FC, useContext } from "react";
+import { ChangeEvent, FC, use, useContext } from "react";
 import styles from "./styles.module.scss";
 import { ThemeContext } from "@/stores/theme";
 import { UserAgentContext } from "@/stores/userAgent";
 import { Environment, Themes } from "@/constants/enum";
 import Links from "../navLink";
 import { useRouter, usePathname } from "next/navigation";
+import { useTranslation } from "react-i18next";
 
-import { useChangeLanguage } from "../../../../hook";
+import { useChangeLanguage, useClientTranslation } from "../../../../hook";
+
+import { Select } from "antd";
+
+import withRegistry from "../../../../../withRegistry";
+
 export interface INavBarProps {}
 interface IData {
   isMobile?: boolean;
@@ -21,13 +27,15 @@ const Header = (data: IData) => {
   const { userAgent } = useContext(UserAgentContext);
 
   const { currentLocale, handleChange } = useChangeLanguage();
+  // const { t } = useClientTranslation();
+  const { t } = useTranslation();
 
   const isEn = pathname.includes("en");
 
-  const changeLang = (e: ChangeEvent<HTMLSelectElement>) => {
+  const changeLang = (value: string) => {
     // const rePathname = pathname.replace(/(zh|en)/, e.target.value);
     // router.push(rePathname);
-    handleChange(e.target.value);
+    handleChange(value);
   };
 
   return (
@@ -35,24 +43,40 @@ const Header = (data: IData) => {
       <Links dict={data.dict} />
       {/* {data.isMobile && <span className={styles.text}>mobile</span>}
       {!data.isMobile && <span className={styles.text}>pc</span>} */}
+      <Select
+        defaultValue={currentLocale}
+        style={{ width: 120 }}
+        onChange={changeLang}
+        options={[
+          { value: "en", label: "en" },
+          { value: "zh", label: "zh" },
+        ]}
+      />
 
-      <select
+      {/* <select
         onChange={(e: ChangeEvent<HTMLSelectElement>) => changeLang(e)}
         value={isEn ? "en" : "zh"}
       >
         <option value="en">en</option>
         <option value="zh">zh</option>
-      </select>
+      </select> */}
 
-      {userAgent === Environment.pc && (
-        <span className={styles.text}>当前是pc端</span>
+      {/* {userAgent === Environment.pc && (
+        <span className={styles.text}>
+          {t("currentDeviceType", { device: "pc" })}
+        </span>
       )}
       {userAgent === Environment.ipad && (
-        <span className={styles.text}>当前是Ipad端</span>
+        <span className={styles.text}>
+          {t("currentDeviceType", { device: "ipad" })}
+        </span>
       )}
       {userAgent === Environment.mobile && (
-        <span className={styles.text}>当前是移动端</span>
-      )}
+        <span className={styles.text}>
+          {" "}
+          {t("currentDeviceType", { device: "mobile" })}
+        </span>
+      )} */}
       <div
         className={styles.themeIcon}
         onClick={(): void => {
@@ -67,4 +91,10 @@ const Header = (data: IData) => {
   );
 };
 
-export default Header;
+const HeaderCom = (data: IData) => {
+  return withRegistry(<Header {...data} />);
+};
+
+export default HeaderCom;
+
+// export default Header;

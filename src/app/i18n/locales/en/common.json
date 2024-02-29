@@ -1,1 +1,5 @@
-{ "about": "about", "home": "home" }
+{
+  "about": "about",
+  "home": "home",
+  "currentDeviceType": "current is {{device}}"
+}
