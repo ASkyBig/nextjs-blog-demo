@@ -97,7 +97,7 @@ const Header = (data: IData) => {
           popupRef.current?.open();
         }}
       >
-        弹窗示范
+        {t("popup")}
       </div>
       <Popup ref={popupRef}>
         <div>这是一个弹窗</div>
