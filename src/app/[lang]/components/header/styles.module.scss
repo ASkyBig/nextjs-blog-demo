@@ -29,7 +29,7 @@
     font-size: 0.875rem;
 
     .popupText {
-      margin-right: 1rem;
+      margin-left: 1rem;
       cursor: pointer;
     }
 
@@ -46,4 +46,9 @@
   background-repeat: no-repeat;
   cursor: pointer;
   margin-left: 1rem;
+}
+
+.popupText {
+  margin-left: 1rem;
+  cursor: pointer;
 }
