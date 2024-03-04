@@ -6,8 +6,9 @@ html[data-theme="dark"] {
   --secondary-color: rgba(255, 255, 255, 0.5);
   --link-color: #34a8eb;
   --theme-icon: url("../../assets/theme_dark.png");
-  // --popup-close-hover-background-color: #353535;
-  // --popup-content-background-color: #1f1f1f;
+  --popup-close-icon: url("/close.png");
+  --popup-close-hover-background-color: #353535;
+  --popup-content-background-color: #1f1f1f;
 }
 
 html[data-theme="light"] {
@@ -18,8 +19,9 @@ html[data-theme="light"] {
   --secondary-color: #666666;
   --link-color: #0070f3;
   --theme-icon: url("../../assets/theme_light.png");
-  // --popup-close-hover-background-color: #f5f5f5;
-  // --popup-content-background-color: #f4f5f5;
+  --popup-close-icon: url("/close_light.png");
+  --popup-close-hover-background-color: #f5f5f5;
+  --popup-content-background-color: #f4f5f5;
 }
 
 html,

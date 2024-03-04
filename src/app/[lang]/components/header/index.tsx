@@ -1,5 +1,5 @@
 "use client";
-import { ChangeEvent, FC, use, useContext } from "react";
+import { ChangeEvent, FC, use, useContext, useRef } from "react";
 import styles from "./styles.module.scss";
 import { ThemeContext } from "@/stores/theme";
 import { UserAgentContext } from "@/stores/userAgent";
@@ -13,6 +13,7 @@ import { useChangeLanguage, useClientTranslation } from "../../../../hook";
 import { Select } from "antd";
 
 import withRegistry from "../../../../../withRegistry";
+import { Popup, IPopupRef } from "../popup";
 
 export interface INavBarProps {}
 interface IData {
@@ -29,6 +30,7 @@ const Header = (data: IData) => {
   const { currentLocale, handleChange } = useChangeLanguage();
   // const { t } = useClientTranslation();
   const { t } = useTranslation();
+  const popupRef = useRef<IPopupRef>(null);
 
   const isEn = pathname.includes("en");
 
@@ -87,6 +89,19 @@ const Header = (data: IData) => {
           }
         }}
       ></div>
+      <div
+        className={styles.popupText}
+        onClick={(): void => {
+          console.log("popupRef", popupRef.current);
+
+          popupRef.current?.open();
+        }}
+      >
+        弹窗示范
+      </div>
+      <Popup ref={popupRef}>
+        <div>这是一个弹窗</div>
+      </Popup>
     </div>
   );
 };
