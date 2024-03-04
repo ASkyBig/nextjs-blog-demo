@@ -1,5 +1,10 @@
 "use client";
-import React, { forwardRef, useState, useImperativeHandle } from "react";
+import React, {
+  forwardRef,
+  useState,
+  useImperativeHandle,
+  useEffect,
+} from "react";
 import styles from "./styles.module.scss";
 import cName from "classnames";
 
@@ -19,6 +24,10 @@ export const Popup = forwardRef<IPopupRef, IProps>(({ children }, ref) => {
       setVisible(true);
     },
   }));
+
+  useEffect(() => {
+    document.body.className = visible ? "forbidScroll" : "";
+  }, [visible]);
 
   const renderDom = visible ? (
     <div
