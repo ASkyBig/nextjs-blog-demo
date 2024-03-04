@@ -7,6 +7,7 @@ import React, {
 } from "react";
 import styles from "./styles.module.scss";
 import cName from "classnames";
+import ReactDom from "react-dom";
 
 export interface IPopupRef {
   open: () => void;
@@ -51,5 +52,8 @@ export const Popup = forwardRef<IPopupRef, IProps>(({ children }, ref) => {
     <></>
   );
 
-  return renderDom;
+  // return renderDom;
+  return typeof document !== "undefined"
+    ? ReactDom.createPortal(renderDom, document.body)
+    : renderDom;
 });
