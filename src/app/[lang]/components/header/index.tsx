@@ -31,7 +31,6 @@ const Header = (data: IData) => {
 
   const { currentLocale, handleChange } = useChangeLanguage();
   const isSupportWebp = useSupportWebp();
-  console.log("isSupportWebp", isSupportWebp);
 
   // const { t } = useClientTranslation();
   const { t } = useTranslation();
