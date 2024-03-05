@@ -14,20 +14,27 @@ const Home: FC<{
   // by default, only need one interface
   // const articles = await getArticlesByPageNo(1);
   // const totalRes = await getAllArticles();
+  try {
+    const { rows, fields }: { rows: IArticle[]; fields: any } =
+      await sql`SELECT * FROM Blogs LIMIT ${pageSize} OFFSET ${offset};`;
 
-  const { rows, fields }: { rows: IArticle[]; fields: any } =
-    await sql`SELECT * FROM Blogs LIMIT ${pageSize} OFFSET ${offset};`;
+    const { rows: CountRows } =
+      await sql`SELECT COUNT(*) AS total_count FROM Blogs;`;
 
-  const { rows: CountRows } =
-    await sql`SELECT COUNT(*) AS total_count FROM Blogs;`;
-
-  return (
-    <ArticleCom
-      articles={rows}
-      total={CountRows[0].total_count}
-      lang={params.lang}
-    />
-  );
+    return (
+      <ArticleCom
+        articles={rows}
+        total={CountRows[0].total_count}
+        lang={params.lang}
+      />
+    );
+  } catch (err) {
+    return (
+      <div>
+        <h1>Something went wrong</h1>
+      </div>
+    );
+  }
 };
 
 export default Home;
