@@ -14,6 +14,8 @@ import { Select } from "antd";
 
 import withRegistry from "../../../../../withRegistry";
 import { Popup, IPopupRef } from "../popup";
+import useSupportWebp from "@/src/hooks/useSupportWebp";
+import cName from "classnames";
 
 export interface INavBarProps {}
 interface IData {
@@ -28,6 +30,9 @@ const Header = (data: IData) => {
   const { userAgent } = useContext(UserAgentContext);
 
   const { currentLocale, handleChange } = useChangeLanguage();
+  const isSupportWebp = useSupportWebp();
+  console.log("isSupportWebp", isSupportWebp);
+
   // const { t } = useClientTranslation();
   const { t } = useTranslation();
   const popupRef = useRef<IPopupRef>(null);
@@ -41,7 +46,12 @@ const Header = (data: IData) => {
   };
 
   return (
-    <div className={styles.header}>
+    <div
+      className={cName({
+        [styles.header]: true,
+        [styles.headerWebp]: isSupportWebp,
+      })}
+    >
       <Links dict={data.dict} />
       {/* {data.isMobile && <span className={styles.text}>mobile</span>}
       {!data.isMobile && <span className={styles.text}>pc</span>} */}

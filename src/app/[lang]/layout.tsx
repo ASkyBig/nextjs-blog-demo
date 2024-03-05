@@ -11,8 +11,9 @@ import getLayoutData from "@api/layout";
 import ThemeContextProvider from "@/stores/theme";
 import UserAgentProvider from "@/stores/userAgent";
 import TranslationsProvider from "@/stores/TranslationsProvider";
+import HeaderProvider from "@/stores/headerProvider";
 
-import { getIsMobile } from "@/utils";
+import { getIsMobile, getIsSupportWebp } from "@/utils";
 // import { getDictionary } from "./dictionaries";
 import initTranslations from "@i18n/index";
 import i18nConfig, { getNamespaces } from "@i18n/i18nConfig";
@@ -45,8 +46,10 @@ const RootLayout: FC<{
   params: { lang: string; locale: string };
 }> = async ({ children, params }) => {
   const data = await getLayoutData();
-  const headersList = headers();
-  const isMobile = getIsMobile(headersList.get("user-agent"));
+  const headersList = Object.fromEntries(headers().entries());
+
+  const isMobile = getIsMobile(headersList["user-agent"]);
+  const isSupportWebp = getIsSupportWebp(headersList["accept"]);
   // const dict = await getDictionary(params.lang);
   const dict = {};
 
@@ -62,18 +65,20 @@ const RootLayout: FC<{
       >
         <ThemeContextProvider>
           <UserAgentProvider>
-            <body className={inter.className}>
-              <Header isMobile={isMobile} dict={dict} />
-              <AntdRegistry>
-                <main className={styles.main}>{children}</main>
-              </AntdRegistry>
-              <Footer {...data} />
-              <Script id="theme-script" strategy="beforeInteractive">
-                {`const item = localStorage.getItem('theme') || 'light';
+            <HeaderProvider headerList={headersList}>
+              <body className={inter.className}>
+                <Header isMobile={isMobile} dict={dict} />
+                <AntdRegistry>
+                  <main className={styles.main}>{children}</main>
+                </AntdRegistry>
+                <Footer {...data} />
+                <Script id="theme-script" strategy="beforeInteractive">
+                  {`const item = localStorage.getItem('theme') || 'light';
           localStorage.setItem('theme', item);
           document.getElementsByTagName('html')[0].dataset.theme = item;`}
-              </Script>
-            </body>
+                </Script>
+              </body>
+            </HeaderProvider>
           </UserAgentProvider>
         </ThemeContextProvider>
       </TranslationsProvider>

@@ -128,9 +128,9 @@ export const Popup = forwardRef<IPopupRef, IProps>(({ children }, ref) => {
           onClick={(): void => {
             setLeave(true);
             setTimeout((): void => {
+              setVisible(false);
               setLeave(false);
             }, 300);
-            setVisible(false);
           }}
         />
         {children}

@@ -6,3 +6,7 @@ export const getIsMobile = (uaString: string | null) => {
     (uaString || "").toLowerCase()
   );
 };
+
+export const getIsSupportWebp = (accept: string | null) => {
+  return accept?.includes("image/webp");
+};
