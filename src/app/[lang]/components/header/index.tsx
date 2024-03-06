@@ -12,7 +12,7 @@ import { useChangeLanguage, useClientTranslation } from "../../../../hook";
 
 import { Select } from "antd";
 
-import withRegistry from "../../../../../withRegistry";
+import withRegistry from "@withRegistry";
 import { Popup, IPopupRef } from "../popup";
 import useSupportWebp from "@/src/hooks/useSupportWebp";
 import cName from "classnames";

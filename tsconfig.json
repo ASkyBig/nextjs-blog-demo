@@ -23,7 +23,8 @@
       "@api/*": ["./src/app/api/*"],
       "@components/*": ["./src/app/[lang]/components/*"],
       "@i18n/*": ["./src/app/i18n/*"],
-      "@assets/*": ["./src/assets/*"]
+      "@assets/*": ["./src/assets/*"],
+      "@withRegistry": ["./withRegistry"]
     }
   },
   "include": [
