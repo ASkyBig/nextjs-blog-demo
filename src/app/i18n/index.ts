@@ -1,4 +1,3 @@
-// index.ts
 import { getOptions } from "./i18nConfig";
 import { Resource, createInstance, i18n } from "i18next";
 import resourcesToBackend from "i18next-resources-to-backend";

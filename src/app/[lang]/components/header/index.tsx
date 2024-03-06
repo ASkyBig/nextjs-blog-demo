@@ -18,12 +18,11 @@ import useSupportWebp from "@/src/hooks/useSupportWebp";
 import cName from "classnames";
 
 export interface INavBarProps {}
-interface IData {
-  isMobile?: boolean;
-  dict: Record<string, string>;
-}
+// interface IData {
+//   isMobile?: boolean;
+// }
 
-const Header = (data: IData) => {
+const Header = () => {
   const pathname = usePathname();
 
   const { setTheme } = useContext(ThemeContext);
@@ -32,15 +31,12 @@ const Header = (data: IData) => {
   const { currentLocale, handleChange } = useChangeLanguage();
   const isSupportWebp = useSupportWebp();
 
-  // const { t } = useClientTranslation();
   const { t } = useTranslation();
   const popupRef = useRef<IPopupRef>(null);
 
   const isEn = pathname.includes("en");
 
   const changeLang = (value: string) => {
-    // const rePathname = pathname.replace(/(zh|en)/, e.target.value);
-    // router.push(rePathname);
     handleChange(value);
   };
 
@@ -51,9 +47,8 @@ const Header = (data: IData) => {
         [styles.headerWebp]: isSupportWebp,
       })}
     >
-      <Links dict={data.dict} />
-      {/* {data.isMobile && <span className={styles.text}>mobile</span>}
-      {!data.isMobile && <span className={styles.text}>pc</span>} */}
+      <Links />
+
       <Select
         defaultValue={currentLocale}
         style={{ width: 120 }}
@@ -64,30 +59,6 @@ const Header = (data: IData) => {
         ]}
       />
 
-      {/* <select
-        onChange={(e: ChangeEvent<HTMLSelectElement>) => changeLang(e)}
-        value={isEn ? "en" : "zh"}
-      >
-        <option value="en">en</option>
-        <option value="zh">zh</option>
-      </select> */}
-
-      {/* {userAgent === Environment.pc && (
-        <span className={styles.text}>
-          {t("currentDeviceType", { device: "pc" })}
-        </span>
-      )}
-      {userAgent === Environment.ipad && (
-        <span className={styles.text}>
-          {t("currentDeviceType", { device: "ipad" })}
-        </span>
-      )}
-      {userAgent === Environment.mobile && (
-        <span className={styles.text}>
-          {" "}
-          {t("currentDeviceType", { device: "mobile" })}
-        </span>
-      )} */}
       <div
         className={styles.themeIcon}
         onClick={(): void => {

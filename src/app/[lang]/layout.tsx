@@ -14,7 +14,6 @@ import TranslationsProvider from "@/stores/TranslationsProvider";
 import HeaderProvider from "@/stores/headerProvider";
 
 import { getIsMobile, getIsSupportWebp } from "@/utils";
-// import { getDictionary } from "./dictionaries";
 import initTranslations from "@i18n/index";
 import i18nConfig, { getNamespaces } from "@i18n/i18nConfig";
 
@@ -50,8 +49,6 @@ const RootLayout: FC<{
 
   const isMobile = getIsMobile(headersList["user-agent"]);
   const isSupportWebp = getIsSupportWebp(headersList["accept"]);
-  // const dict = await getDictionary(params.lang);
-  const dict = {};
 
   const ns = getNamespaces();
   const { resources } = await initTranslations(params.lang, ns);
@@ -67,7 +64,7 @@ const RootLayout: FC<{
           <UserAgentProvider>
             <HeaderProvider headerList={headersList}>
               <body className={inter.className}>
-                <Header isMobile={isMobile} dict={dict} />
+                <Header isMobile={isMobile} />
                 <AntdRegistry>
                   <main className={styles.main}>{children}</main>
                 </AntdRegistry>

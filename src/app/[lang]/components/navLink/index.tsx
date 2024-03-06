@@ -6,7 +6,7 @@ import styles from "./styles.module.scss";
 
 import { useClientTranslation } from "../../../../hook";
 
-export default function Links({ dict }: any) {
+export default function Links() {
   const pathname = usePathname();
   const router = useRouter();
   const isEn = /^\/en/.test(usePathname());
@@ -26,7 +26,6 @@ export default function Links({ dict }: any) {
         }`}
         href={homePath}
       >
-        {/* {dict.home} */}
         {t("home")}
       </Link>
 
@@ -36,7 +35,6 @@ export default function Links({ dict }: any) {
         }`}
         href={aboutPath}
       >
-        {/* {dict.about} */}
         {t("about")}
       </Link>
       {/* <div

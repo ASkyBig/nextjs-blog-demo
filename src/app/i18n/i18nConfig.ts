@@ -22,7 +22,6 @@ export function getOptions(
   };
 }
 
-// 这个属性必须要用默认导出
 const i18nConfig = {
   defaultLocale: "zh",
   locales: ["zh", "en"],
