@@ -43,12 +43,15 @@ export function generateStaticParams() {
 const RootLayout: FC<{
   children: JSX.Element;
   params: { lang: string; locale: string };
+  searchParams: { [key: string]: string | string[] | undefined };
 }> = async ({ children, params }) => {
   const data = await getLayoutData();
   const headersList = Object.fromEntries(headers().entries());
 
   const isMobile = getIsMobile(headersList["user-agent"]);
   const isSupportWebp = getIsSupportWebp(headersList["accept"]);
+  const name = headersList["x-url"];
+  console.log("name", name);
 
   const ns = getNamespaces();
   const { resources } = await initTranslations(params.lang, ns);
@@ -64,7 +67,7 @@ const RootLayout: FC<{
           <UserAgentProvider>
             <HeaderProvider headerList={headersList}>
               <body className={inter.className}>
-                <Header isMobile={isMobile} />
+                <Header isMobile={isMobile} name={name} />
                 <AntdRegistry>
                   <main className={styles.main}>{children}</main>
                 </AntdRegistry>

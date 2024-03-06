@@ -5,7 +5,7 @@ import { ThemeContext } from "@/stores/theme";
 import { UserAgentContext } from "@/stores/userAgent";
 import { Environment, Themes } from "@/constants/enum";
 import Links from "../navLink";
-import { useRouter, usePathname } from "next/navigation";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { useTranslation } from "react-i18next";
 
 import { useChangeLanguage, useClientTranslation } from "../../../../hook";
@@ -24,9 +24,18 @@ export interface INavBarProps {}
 
 const Header = () => {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  const name = new URLSearchParams(searchParams.toString()).get("name") || "";
+  // const [name, setName] = useState("");
+  // console.log("name", name);
 
   const { setTheme } = useContext(ThemeContext);
   const { userAgent } = useContext(UserAgentContext);
+  const router = useRouter();
+
+  // const { query } = router;
+  console.log("pathname", pathname);
 
   const { currentLocale, handleChange } = useChangeLanguage();
   const isSupportWebp = useSupportWebp();
@@ -40,6 +49,16 @@ const Header = () => {
     handleChange(value);
   };
 
+  const handleLogin = () => {
+    const client_id = "0282358f71485e5186fe";
+
+    const authorize_uri = "https://github.com/login/oauth/authorize";
+    const redirect_uri = "http://localhost:3000/api/oauth/redirect";
+    router.push(
+      `${authorize_uri}?client_id=${client_id}&redirect_uri=${redirect_uri}`
+    );
+  };
+
   return (
     <div
       className={cName({
@@ -48,7 +67,11 @@ const Header = () => {
       })}
     >
       <Links />
-
+      {name ? (
+        <div>{name}</div>
+      ) : (
+        <div onClick={handleLogin}>login with github</div>
+      )}
       <Select
         defaultValue={currentLocale}
         style={{ width: 120 }}
@@ -79,6 +102,7 @@ const Header = () => {
       >
         {t("popup")}
       </div>
+
       <Popup ref={popupRef}>
         <div>这是一个弹窗</div>
       </Popup>

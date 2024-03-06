@@ -11,6 +11,7 @@ function getLocale() {
 export function middleware(request: NextRequest) {
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set("x-url", request.url);
+  // todo
   return i18nRouter(request, i18nConfig);
   // return NextResponse.next({
   //   request: {
