@@ -53,7 +53,7 @@ const Header = () => {
     const client_id = "0282358f71485e5186fe";
 
     const authorize_uri = "https://github.com/login/oauth/authorize";
-    const redirect_uri = "http://localhost:3000/api/oauth/redirect";
+    const redirect_uri = "http://localhost:3000/api/oauth/redirect/";
     router.push(
       `${authorize_uri}?client_id=${client_id}&redirect_uri=${redirect_uri}`
     );
