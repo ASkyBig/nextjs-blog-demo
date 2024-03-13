@@ -1,6 +1,7 @@
 import axios from "axios";
 import { isEmpty } from "lodash";
-import { CMS_DOMAIN } from "@/utils";
+import { CMS_DOMAIN, SERVICE_DOMAIN } from "@/utils";
+import Axios from "@/utils/axios";
 
 const getLayoutData = () => {
   // return axios.get(`${CMS_DOMAIN}/api/layouts`).then((result) => {
@@ -32,4 +33,19 @@ const getLayoutData = () => {
   };
 };
 
+const checkLogin = async () => {
+  try {
+    const result = await Axios.post("/users/checkLogin");
+    return true;
+  } catch (err: any) {
+    console.log("err", err.response.status);
+    return {
+      status: err.response.status,
+      data: err.response.data,
+    };
+  }
+  // const result = await Axios.post("/users/checkLogin");
+  // return result.data;
+};
+export { checkLogin };
 export default getLayoutData;

@@ -17,6 +17,14 @@ const nextConfig = {
     };
     return config;
   },
+  // async rewrites() {
+  //   return [
+  //     {
+  //       source: "/users/:path*", // 匹配所有以/api/开头的请求
+  //       destination: "http://localhost:3002/users/:path*", // 将请求转发到本地服务的地址
+  //     },
+  //   ];
+  // },
 };
 
 module.exports = nextConfig;

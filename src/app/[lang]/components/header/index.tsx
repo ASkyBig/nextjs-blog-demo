@@ -36,6 +36,8 @@ const Header = () => {
 
   // const { query } = router;
   console.log("pathname", pathname);
+  const isOnboardingPage = pathname.includes("/onboarding");
+  if (isOnboardingPage) return null;
 
   const { currentLocale, handleChange } = useChangeLanguage();
   const isSupportWebp = useSupportWebp();

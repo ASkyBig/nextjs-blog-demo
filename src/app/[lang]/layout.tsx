@@ -7,7 +7,7 @@ import { AntdRegistry } from "@ant-design/nextjs-registry";
 
 import Header from "@components/header";
 import { Footer, IFooterProps } from "@components/footer";
-import getLayoutData from "@api/layout";
+import getLayoutData, { checkLogin } from "@api/layout";
 import ThemeContextProvider from "@/stores/theme";
 import UserAgentProvider from "@/stores/userAgent";
 import TranslationsProvider from "@/stores/TranslationsProvider";
@@ -19,6 +19,7 @@ import i18nConfig, { getNamespaces } from "@i18n/i18nConfig";
 
 import styles from "./page.module.scss";
 import "./globals.scss";
+import { redirect } from "next/navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -47,11 +48,19 @@ const RootLayout: FC<{
 }> = async ({ children, params }) => {
   const data = await getLayoutData();
   const headersList = Object.fromEntries(headers().entries());
+  // console.log("headersList +++++", headersList);
+  const res: { status: number; data: { [key: string]: string } } =
+    await checkLogin();
+  if (res.status !== 200) {
+    redirect("/onboarding");
+  }
+
+  console.log("checkLogin res ------", res);
 
   const isMobile = getIsMobile(headersList["user-agent"]);
   const isSupportWebp = getIsSupportWebp(headersList["accept"]);
+  // todo
   const name = headersList["x-url"];
-  console.log("name", name);
 
   const ns = getNamespaces();
   const { resources } = await initTranslations(params.lang, ns);

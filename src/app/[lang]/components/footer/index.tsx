@@ -35,7 +35,9 @@ export const Footer: FC<IFooterProps> = ({ title, linkList }) => {
 
   const year = new Date().getFullYear();
   const isArticleDetailPage = pathname.includes("/article/");
-  if (isArticleDetailPage) return null;
+  const isOnboardingPage = pathname.includes("/onboarding");
+  if (isArticleDetailPage || isOnboardingPage) return null;
+
   return (
     <>
       <div className={styles.copyright}>
